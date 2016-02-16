@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4114F9901C72F9C100C2B0C5 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4114F98F1C72F9C100C2B0C5 /* ArticleTableViewCell.swift */; };
 		41E86BD71C6C72DA00C046C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E86BD61C6C72DA00C046C8 /* AppDelegate.swift */; };
 		41E86BD91C6C72DA00C046C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E86BD81C6C72DA00C046C8 /* ViewController.swift */; };
 		41E86BDC1C6C72DA00C046C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDA1C6C72DA00C046C8 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4114F98F1C72F9C100C2B0C5 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		41E86BD11C6C72DA00C046C8 /* MathNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MathNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E86BD51C6C72DA00C046C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41E86BD61C6C72DA00C046C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				41E86BD61C6C72DA00C046C8 /* AppDelegate.swift */,
 				41E86BD81C6C72DA00C046C8 /* ViewController.swift */,
 				41E86BDA1C6C72DA00C046C8 /* Main.storyboard */,
+				4114F98F1C72F9C100C2B0C5 /* ArticleTableViewCell.swift */,
 				41E86BDD1C6C72DA00C046C8 /* Images.xcassets */,
 				41E86BDF1C6C72DA00C046C8 /* LaunchScreen.xib */,
 				41E86BD41C6C72DA00C046C8 /* Supporting Files */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41E86BD91C6C72DA00C046C8 /* ViewController.swift in Sources */,
+				4114F9901C72F9C100C2B0C5 /* ArticleTableViewCell.swift in Sources */,
 				41E86BD71C6C72DA00C046C8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +413,7 @@
 				41E86BF21C6C72DA00C046C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41E86BF31C6C72DA00C046C8 /* Build configuration list for PBXNativeTarget "MathNewsTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				41E86BF51C6C72DA00C046C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
