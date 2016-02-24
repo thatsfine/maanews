@@ -13,10 +13,15 @@ class TableViewController: UITableViewController {
     var articles = [String]()
     
     
+    
+    
     func loadSampleArticles(){
-        let link1 = "http://phys.org/news/2016-02-secret-pancake-mathematically.html"
-        let link2 = "http://phys.org/news/2016-01-corals-crochet-cosmos-hyperbolic-geometry.html"
-        let link3 = "http://www.bloomberg.com/news/articles/2016-02-15/the-intriguing-math-that-turns-manhattan-properties-into-shekels"
+        let link1 = "Secret to the perfect pancake \ndescribed mathematically"
+       // http://phys.org/news/2016-02-secret-pancake-mathematically.html"
+        let link2 = "Corals, crochet and the cosmos:\n how hyperbolic geometry pervades the universe"
+        //http://phys.org/news/2016-01-corals-crochet-cosmos-hyperbolic-geometry.html"
+        let link3 = "The Intriguing Math That Turns\n Manhattan Properties Into Shekels"
+        //http://www.bloomberg.com/news/articles/2016-02-15/the-intriguing-math-that-turns-manhattan-properties-into-shekels"
         
         articles+=[link1,link2,link3]
         
@@ -50,10 +55,10 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentfier = "ArticleTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentfier, forIndexPath: indexPath) as! ArticleTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentfier, forIndexPath: indexPath) as!ArticleTableViewCell
 
         // Configure the cell...
-        cell.LinkLabel.text = articles[indexPath.row]
+        cell.LinkLabel?.text = articles[indexPath.row]
 
         return cell
     }
