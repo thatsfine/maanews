@@ -67,6 +67,8 @@ class TableViewController: UITableViewController {
         
         //mini-content
         cell.ContentLabel?.text = articleContent[indexPath.row]
+        
+        
 
         return cell
     }
