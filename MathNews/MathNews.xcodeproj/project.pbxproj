@@ -16,6 +16,9 @@
 		41E86BDE1C6C72DA00C046C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDD1C6C72DA00C046C8 /* Images.xcassets */; };
 		41E86BE11C6C72DA00C046C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDF1C6C72DA00C046C8 /* LaunchScreen.xib */; };
 		41E86BED1C6C72DA00C046C8 /* MathNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E86BEC1C6C72DA00C046C8 /* MathNewsTests.swift */; };
+		865FB06C1C8ABC380065A57D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9BF241C7417C700F8AFD4 /* TableViewController.swift */; };
+		866B4F1A1C87680C00C8AE90 /* webViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866B4F191C87680C00C8AE90 /* webViewLink.swift */; };
+		91CDB29D6D55A0BC7A12E8E0 /* libPods-MathNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1998C0D63A979ED9CEFC135 /* libPods-MathNews.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,10 @@
 		41E86BE61C6C72DA00C046C8 /* MathNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E86BEB1C6C72DA00C046C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41E86BEC1C6C72DA00C046C8 /* MathNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathNewsTests.swift; sourceTree = "<group>"; };
+		866B4F191C87680C00C8AE90 /* webViewLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webViewLink.swift; sourceTree = "<group>"; };
+		9DE8E59E5B1C5A2081EC0936 /* Pods-MathNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MathNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MathNews/Pods-MathNews.debug.xcconfig"; sourceTree = "<group>"; };
+		B0F9F677F1EA2631D695B815 /* Pods-MathNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MathNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-MathNews/Pods-MathNews.release.xcconfig"; sourceTree = "<group>"; };
+		C1998C0D63A979ED9CEFC135 /* libPods-MathNews.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MathNews.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91CDB29D6D55A0BC7A12E8E0 /* libPods-MathNews.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +70,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E88F461C8D897EC163CCF14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1998C0D63A979ED9CEFC135 /* libPods-MathNews.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		41E86BC81C6C72DA00C046C8 = {
 			isa = PBXGroup;
 			children = (
 				41E86BD31C6C72DA00C046C8 /* MathNews */,
 				41E86BE91C6C72DA00C046C8 /* MathNewsTests */,
 				41E86BD21C6C72DA00C046C8 /* Products */,
+				D9CCDC4F00B99435DBEFCDAD /* Pods */,
+				2E88F461C8D897EC163CCF14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +104,7 @@
 				41E86BD61C6C72DA00C046C8 /* AppDelegate.swift */,
 				41E86BD81C6C72DA00C046C8 /* ViewController.swift */,
 				41E86BDA1C6C72DA00C046C8 /* Main.storyboard */,
+				866B4F191C87680C00C8AE90 /* webViewLink.swift */,
 				41D9BF241C7417C700F8AFD4 /* TableViewController.swift */,
 				41D9BF251C7417C700F8AFD4 /* TableViewController.xib */,
 				4114F98F1C72F9C100C2B0C5 /* ArticleTableViewCell.swift */,
@@ -121,6 +140,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D9CCDC4F00B99435DBEFCDAD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9DE8E59E5B1C5A2081EC0936 /* Pods-MathNews.debug.xcconfig */,
+				B0F9F677F1EA2631D695B815 /* Pods-MathNews.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41E86BF01C6C72DA00C046C8 /* Build configuration list for PBXNativeTarget "MathNews" */;
 			buildPhases = (
+				B460C163DCF9317C127C02B9 /* Check Pods Manifest.lock */,
 				41E86BCD1C6C72DA00C046C8 /* Sources */,
 				41E86BCE1C6C72DA00C046C8 /* Frameworks */,
 				41E86BCF1C6C72DA00C046C8 /* Resources */,
+				5CDAE7191DAC36484AD587D9 /* Embed Pods Frameworks */,
+				C3D937D265C4CB03AAF2EFEC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -165,11 +196,13 @@
 		41E86BC91C6C72DA00C046C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = cs121MathNewApp;
 				TargetAttributes = {
 					41E86BD01C6C72DA00C046C8 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = H46FG5794S;
 					};
 					41E86BE51C6C72DA00C046C8 = {
 						CreatedOnToolsVersion = 6.4;
@@ -217,11 +250,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5CDAE7191DAC36484AD587D9 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathNews/Pods-MathNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B460C163DCF9317C127C02B9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C3D937D265C4CB03AAF2EFEC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MathNews/Pods-MathNews-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		41E86BCD1C6C72DA00C046C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				866B4F1A1C87680C00C8AE90 /* webViewLink.swift in Sources */,
 				41E86BD91C6C72DA00C046C8 /* ViewController.swift in Sources */,
 				4114F9901C72F9C100C2B0C5 /* ArticleTableViewCell.swift in Sources */,
 				41E86BD71C6C72DA00C046C8 /* AppDelegate.swift in Sources */,
@@ -234,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41E86BED1C6C72DA00C046C8 /* MathNewsTests.swift in Sources */,
+				865FB06C1C8ABC380065A57D /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +371,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -303,7 +387,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -350,21 +434,31 @@
 		};
 		41E86BF11C6C72DA00C046C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DE8E59E5B1C5A2081EC0936 /* Pods-MathNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MathNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		41E86BF21C6C72DA00C046C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0F9F677F1EA2631D695B815 /* Pods-MathNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MathNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -382,6 +476,7 @@
 				);
 				INFOPLIST_FILE = MathNewsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathNews.app/MathNews";
 			};
@@ -397,6 +492,7 @@
 				);
 				INFOPLIST_FILE = MathNewsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MathNews.app/MathNews";
 			};

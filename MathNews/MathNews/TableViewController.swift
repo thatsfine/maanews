@@ -7,13 +7,33 @@
 //
 
 import UIKit
+import Firebase
 
 class TableViewController: UITableViewController {
     //MARK: Properties
     var articles = [String]()
     var articleContent = [String]()
     
+    // Establish connection to firebase
+    let ref = Firebase(url: "https://<your-firebase-app>.firebaseio.com/grocery-items")
     
+    func loadArticles(){
+        let link1 = "Secret to the perfect pancake described mathematically"
+        
+        let content1 = "Maths students from the University of Sheffield have swapped calculus for the kitchen by developing a formula to prepare the perfect pancake."
+        let link2 = "Corals, crochet and the cosmos:how hyperbolic geometry pervades the universe"
+        
+        let content2 = " We have built a world of largely straight lines – the houses we live in, the skyscrapers we work in and the streets we drive on our daily commutes."
+        let link3 = "The Intriguing Math That Turns Manhattan Properties Into Shekels"
+        
+        let content3 = "What do Israeli investors know about retirement homes in Indiana? Enough to lend them $68 million.Strawberry Fields, a real estate investment trust whose facilities cater to Alzheimer’s sufferers in the Midwest, is the latest of at least 14 U.S. property companies that have borrowed a combined 8.1 billion shekels ($2.07 billion) in the Israeli market since 2008, securing interest rates they could only dream of at home."
+        //the titles
+        articles+=[link1,link2,link3]
+        //the content
+        articleContent+=[content1,content2,content3]
+        
+    }
+
     func loadSampleArticles(){
         let link1 = "Secret to the perfect pancake described mathematically"
        
