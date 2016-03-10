@@ -14,11 +14,9 @@ class TableViewController: UITableViewController {
     var articles = [String]()
     var articleContent = [String]()
     
-    // Establish connection to firebase
-    let ref = Firebase(url: "https://<your-firebase-app>.firebaseio.com/grocery-items")
     
     func loadArticles(){
-        let link1 = "Secret to the perfect pancake described mathematically"
+        let link1 = "Hi tony"
         
         let content1 = "Maths students from the University of Sheffield have swapped calculus for the kitchen by developing a formula to prepare the perfect pancake."
         let link2 = "Corals, crochet and the cosmos:how hyperbolic geometry pervades the universe"
@@ -53,6 +51,13 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let ref = Firebase(url:"https://crackling-torch-4312.firebaseio.com")
+        // Retrieve new posts as they are added to your database
+        ref.observeEventType(.ChildAdded, withBlock: { snapshot in
+            print(snapshot.value.objectForKey("KCIVooi4bqdPPIGZN2l"))
+            print(snapshot.value.objectForKey("title"))
+        })
 
         //load the sample articles
         loadSampleArticles()
