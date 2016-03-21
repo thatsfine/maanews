@@ -16,7 +16,6 @@
 		41E86BDE1C6C72DA00C046C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDD1C6C72DA00C046C8 /* Images.xcassets */; };
 		41E86BE11C6C72DA00C046C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDF1C6C72DA00C046C8 /* LaunchScreen.xib */; };
 		41E86BED1C6C72DA00C046C8 /* MathNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E86BEC1C6C72DA00C046C8 /* MathNewsTests.swift */; };
-		865FB06C1C8ABC380065A57D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D9BF241C7417C700F8AFD4 /* TableViewController.swift */; };
 		866B4F1A1C87680C00C8AE90 /* webViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866B4F191C87680C00C8AE90 /* webViewLink.swift */; };
 		866EE9C11C8E082E005798F6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C01C8E082E005798F6 /* CFNetwork.framework */; };
 		866EE9C31C8E0837005798F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C21C8E0837005798F6 /* SystemConfiguration.framework */; };
@@ -28,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		410FEA441C916E0C008FC836 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41E86BC91C6C72DA00C046C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41E86BE51C6C72DA00C046C8;
+			remoteInfo = MathNewsTests;
+		};
 		41E86BE71C6C72DA00C046C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 41E86BC91C6C72DA00C046C8 /* Project object */;
@@ -68,9 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				866EE9CB1C8E0861005798F6 /* Foundation.framework in Frameworks */,
 				866EE9C91C8E0854005798F6 /* libicucore.tbd in Frameworks */,
 				866EE9C71C8E084B005798F6 /* libc++.tbd in Frameworks */,
+				866EE9CB1C8E0861005798F6 /* Foundation.framework in Frameworks */,
 				866EE9C51C8E0840005798F6 /* Security.framework in Frameworks */,
 				866EE9C31C8E0837005798F6 /* SystemConfiguration.framework in Frameworks */,
 				866EE9C11C8E082E005798F6 /* CFNetwork.framework in Frameworks */,
@@ -190,6 +196,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				410FEA451C916E0C008FC836 /* PBXTargetDependency */,
 			);
 			name = MathNews;
 			productName = MathNews;
@@ -340,13 +347,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				41E86BED1C6C72DA00C046C8 /* MathNewsTests.swift in Sources */,
-				865FB06C1C8ABC380065A57D /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		410FEA451C916E0C008FC836 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41E86BE51C6C72DA00C046C8 /* MathNewsTests */;
+			targetProxy = 410FEA441C916E0C008FC836 /* PBXContainerItemProxy */;
+		};
 		41E86BE81C6C72DA00C046C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 41E86BD01C6C72DA00C046C8 /* MathNews */;
@@ -472,6 +483,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -487,6 +499,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
