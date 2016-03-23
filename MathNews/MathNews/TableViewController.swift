@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-//check to see if username works
+//check to see if EMAIL works
 
 class TableViewController: UITableViewController {
     //MARK: Properties
