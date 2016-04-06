@@ -33,9 +33,14 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //load the sample articles
         loadSampleArticles()
+        //sets the table's background to light gray
+        self.tableView.backgroundColor = UIColor.lightGrayColor()
+        //gets rid of the unoccupied cells
+        tableView.tableFooterView = UIView(frame:CGRectZero)
+        tableView.separatorColor = UIColor.whiteColor()
 
     }
 
@@ -65,6 +70,8 @@ class TableViewController: UITableViewController {
         //title
         cell.LinkLabel?.text = articles[indexPath.row]
         
+        // cell background color
+        cell.backgroundColor = UIColor.clearColor()
         //mini-content
         cell.ContentLabel?.text = articleContent[indexPath.row]
         
