@@ -12,37 +12,45 @@ import Firebase
 
 class TableViewController: UITableViewController {
     //MARK: Properties
-    var articles = [String]()
-    var articleContent = [String]()
+    
+    //create empty arrays for titles, blurbs, urls
+    var titleArray = [String]()
+    var blurbArray = [String]()
+    var urlArray = [String]()
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        var counter = 0
-        //Create reference to database
-        let ref = Firebase(url:"https://crackling-torch-4312.firebaseio.com")
-        // Retrieve new posts as they are added to your database
-        ref.observeEventType(.Value, withBlock: { snapshot in
-           
-            //
-            for item in snapshot.children {
-                let keysArray = Array((snapshot.value as! NSDictionary).allKeys as! [String])
-                let title = snapshot.value[keysArray[counter]] as! String
-                self.articles.append(title)
-                self.articleContent.append("blurb will go here")
-                ++counter
-            }
-            self.tableView.reloadData()
+        // Create reference to database
+        // Currently references articles sub-category
+        let ref = Firebase(url:"https://crackling-torch-4312.firebaseio.com/articles")
+        
+        // Retrieve new articles as they are added to your database
+        ref.observeEventType(.ChildAdded, withBlock: { snapshot in
+        
+        //grab titles, blurbs, and urls from firebase
+        let title = snapshot.value.objectForKey("title")!
+        let blurb = snapshot.value.objectForKey("blurb")!
+        let url = snapshot.value.objectForKey("da Url")!
+
+        //add titles, blurbs, and urls to respective array
+        //and convert to strings
+        self.titleArray.append(title as! String)
+        self.blurbArray.append(blurb as! String)
+        self.urlArray.append(url as! String)
+        
+        //reload table with above data
+        self.tableView.reloadData()
+            
+        }, withCancelBlock: { error in
+                print(error.description)
+        
         })
-       
-       
+  
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  loadArticles()
-
-
     }
 
     
@@ -60,7 +68,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return articles.count
+        return titleArray.count
     }
 
     
@@ -68,28 +76,23 @@ class TableViewController: UITableViewController {
         let cellIdentfier = "ArticleTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentfier, forIndexPath: indexPath) as!ArticleTableViewCell
 
-        // Configure the cell...
-        //title
-        cell.LinkLabel?.text = articles[indexPath.row]
+        //Configure the cell
         
-        //mini-content
-        cell.ContentLabel?.text = articleContent[indexPath.row]
+        //Display title
+        cell.LinkLabel?.text = titleArray[indexPath.row]
         
+        //Display blurb
+        cell.ContentLabel?.text = blurbArray[indexPath.row]
         
 
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("You selected cell #\(indexPath.row)!")
-       //opens the url to article depending on the cell that is clicked
-        if(indexPath.row == 0){
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://phys.org/news/2016-02-secret-pancake-mathematically.html")!)}
-        else if (indexPath.row==1){
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://phys.org/news/2016-01-corals-crochet-cosmos-hyperbolic-geometry.html")!)
-        }
-        else{
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://www.bloomberg.com/news/articles/2016-02-15/the-intriguing-math-that-turns-manhattan-properties-into-shekels")!)
-        }
+
+        //opens URLs to news articles
+        UIApplication.sharedApplication().openURL(NSURL(string: urlArray[indexPath.row])!)
+    
     }
     
     //
