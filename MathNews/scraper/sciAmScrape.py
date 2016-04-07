@@ -3,19 +3,17 @@
 
 # In[23]:
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, SoupStrainer
 import urllib2
 import re
 from firebase import firebase
 
 
-# In[24]:
 
 # Connect to firebase
 firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com/', None)
 
 
-# In[25]:
 
 # Make the soup, real quick
 quMath_url = "http://www.scientificamerican.com/math/"
@@ -23,7 +21,6 @@ page_html = urllib2.urlopen(quMath_url)
 soup = BeautifulSoup(page_html)
 
 
-# In[26]:
 
 # Find article titles and print them
 titles = []
@@ -32,16 +29,15 @@ for art in soup.find_all('article'):
 print titles
 
 
-# In[27]:
 
 # Sift for article urls and print them
-# Unfortunately, the page source has double URLs so we print double, but when giving these to the db
-# it's just a simple matter of iterating over every other link
 urList=[]
-for urls in soup.find_all(href=re.compile("article")):
-    urList.append(urls['href'])
-#k
-print urList
+for urls in soup.find_all('article'):
+	fullUrl = urls.find_all('a')[1]	#prints urls twice uses [1] to get first instance
+	if fullUrl.has_attr('href'):
+		urList.append(fullUrl['href'])
+
+		print fullUrl['href']
 
 
 #Find blurbs
@@ -49,25 +45,19 @@ blurbs = []
 for para in soup.find_all('p', {'class': 't_body listing-wide__inner__desc'}):
 	blurbs.append(para.string)
 
+#Put data onto firebase 
+for i in range(0, len(titles)):
+	result = firebase.post('/articles', {"blurb": blurbs[i], "da Url": urList[i], "title": titles[i]})
+	print result
 
-# In[34]:
 
-# for i in range(0,len(titles)):
-#     result=firebase.post('/', titles[i])
-#     #result=firebase.post('/', urList[i])    could uncomment and alternate url after title
-#     print result
-# #since particular site lists URLs twice, print every other url using [2*j]
-# for j in range(0, len(urList)):
-# 	result=firebase.post('/', urList[2*j])
-# 	print result
-#  for k in range(0, len(blurbs)):
-#  	result=firebase.post('/', blurbs[k])
-#  	print result
 
-result = firebase.post('/articles', 'hi')
-print result
+
+
+
 # In[ ]:
 #Now for the blurb: turn each url into a soup 
+#Possible starter method to scrape blurbs if the main page doesnt already have them
 
 # for k in range(0, len(urList)):
 # 	quMath_url = urList[2*k]
