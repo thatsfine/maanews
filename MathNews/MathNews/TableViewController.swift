@@ -12,6 +12,7 @@ class TableViewController: UITableViewController {
     //MARK: Properties
     var articles = [String]()
     var articleContent = [String]()
+    var roseColor = UIColor(red: 247, green: 168, blue: 209, alpha: 0.5)
     
     
     func loadSampleArticles(){
@@ -33,14 +34,18 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Change the color of the navigation controller and text color
+       // self.navigationController?.navigationBar.barTintColor = UIColor.lightGrayColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 237.0/255.0, green: 109.0/255.0, blue: 148.0/255.0, alpha: 0.5) ]
+
         
         //load the sample articles
         loadSampleArticles()
-        //sets the table's background to light gray
-        self.tableView.backgroundColor = UIColor.lightGrayColor()
+        //sets the table's background to white
+        self.tableView.backgroundColor = UIColor.whiteColor()
         //gets rid of the unoccupied cells
         tableView.tableFooterView = UIView(frame:CGRectZero)
-        tableView.separatorColor = UIColor.whiteColor()
+       
 
     }
 
@@ -71,16 +76,27 @@ class TableViewController: UITableViewController {
         cell.LinkLabel?.text = articles[indexPath.row]
         
         // cell background color
-        cell.backgroundColor = UIColor.clearColor()
+      
+            cell.backgroundColor = UIColor.clearColor()
+        
         //mini-content
         cell.ContentLabel?.text = articleContent[indexPath.row]
-        
+        //the color change of the cell once its clicked
+        let cellBGView = UIView()
+        cellBGView.backgroundColor = UIColor(red: 237.0/255.0, green: 109.0/255.0, blue: 148.0/255.0, alpha: 1)
+        cell.selectedBackgroundView = cellBGView
         
 
         return cell
     }
+ 
+
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("You selected cell #\(indexPath.row)!")
+        //unselects cell after being clicked
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
        //opens the url to article depending on the cell that is clicked
         if(indexPath.row == 0){
             UIApplication.sharedApplication().openURL(NSURL(string: "http://phys.org/news/2016-02-secret-pancake-mathematically.html")!)}
@@ -90,6 +106,7 @@ class TableViewController: UITableViewController {
         else{
             UIApplication.sharedApplication().openURL(NSURL(string: "http://www.bloomberg.com/news/articles/2016-02-15/the-intriguing-math-that-turns-manhattan-properties-into-shekels")!)
         }
+        
     }
     
     //
