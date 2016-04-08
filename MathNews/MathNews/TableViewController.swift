@@ -36,7 +36,7 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         //Change the color of the navigation controller and text color
        // self.navigationController?.navigationBar.barTintColor = UIColor.lightGrayColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 237.0/255.0, green: 109.0/255.0, blue: 148.0/255.0, alpha: 0.5) ]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 0.0/255.0, green: 137.0/255.0, blue: 237.0/255.0, alpha: 1.0) ]
 
         
         //load the sample articles
