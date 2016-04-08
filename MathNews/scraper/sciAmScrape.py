@@ -44,11 +44,17 @@ for urls in soup.find_all('article'):
 blurbs = []
 for para in soup.find_all('p', {'class': 't_body listing-wide__inner__desc'}):
 	blurbs.append(para.string)
-
-#Put data onto firebase 
-for i in range(0, len(titles)):
-	result = firebase.post('/articles', {"blurb": blurbs[i], "da Url": urList[i], "title": titles[i]})
-	print result
+print(len(blurbs))
+print(len(titles))
+print(len(urList))
+for i in range(len(blurbs)):
+	print titles[i]
+	print urList[i]
+	print blurbs[i]
+# #Put data onto firebase 
+# for i in range(0, len(titles)):
+# 	result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})
+# 	print result
 
 
 
