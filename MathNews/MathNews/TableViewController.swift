@@ -31,7 +31,7 @@ class TableViewController: UITableViewController {
         //grab titles, blurbs, and urls from firebase
         let title = snapshot.value.objectForKey("title")!
         let blurb = snapshot.value.objectForKey("blurb")!
-        let url = snapshot.value.objectForKey("da Url")!
+        let url = snapshot.value.objectForKey("url")!
 
         //add titles, blurbs, and urls to respective array
         //and convert to strings
