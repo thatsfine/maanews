@@ -1,8 +1,3 @@
-
-# coding: utf-8
-
-# In[23]:
-
 from bs4 import BeautifulSoup, SoupStrainer
 import urllib2
 import re
@@ -34,12 +29,17 @@ for urls in soup.find_all('a', {'class': 'story-link'}):
 print urList
 
 
-#Find blurbs
+# Find blurbs
 blurbs = []
 for para in soup.find_all('p', {'itemprop': 'description'}):
     blurbs.append(para.string)
 
-#Put data onto firebase 
+print blurbs
+
+dates = []
+for date in soup.find_all
+
+# Put data onto firebase 
 for i in range(0, len(titles)):
     result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})	
     print result
