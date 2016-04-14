@@ -4,10 +4,10 @@ import re
 from firebase import firebase
 
 # Connect to firebase
-firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com/', None)
+firebase = firebase.FirebaseApplication('https://blistering-torch-2886.firebaseio.com/', None)
 
 # Make the soup, real quick
-quMath_url = "http://www.wired.com/?s=math&sort=score&order=desc"
+quMath_url = "http://www.wired.com/?s=math"
 page_html = urllib2.urlopen(quMath_url) 
 soup = BeautifulSoup(page_html)
 
@@ -33,7 +33,13 @@ for para in soup.find_all('p', {'class': 'exchange-sm clamp-3 marg-t-micro'}):
 
 print blurbs
 
+dates = []
+for date in soup.find_all('time'):
+	dates.append(date.get('pubdate'))
+
+print dates
+
 #Put data onto firebase 
 for i in range(0, len(titles)):
-    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})	
+    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i], "date": dates[i+1]})	
     print result
