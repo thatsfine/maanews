@@ -5,7 +5,7 @@ from firebase import firebase
 
 
 # Connect to firebase
-firebase = firebase.FirebaseApplication('https://blistering-torch-2886.firebaseio.com/', None)
+firebase = firebase.FirebaseApplication('http://crackling-torch-4312.firebaseio.com', None)
 
 
 # Make the soup, real quick
