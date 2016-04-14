@@ -5,7 +5,7 @@ from firebase import firebase
 
 
 # Connect to firebase
-firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com/articles', None)
+firebase = firebase.FirebaseApplication('https://blistering-torch-2886.firebaseio.com/', None)
 
 
 # Make the soup, real quick
@@ -36,10 +36,14 @@ for para in soup.find_all('p', {'itemprop': 'description'}):
 
 print blurbs
 
+# Get dates for each article
 dates = []
-for date in soup.find_all
+for date in soup.find_all('time'):
+	dates.append(date['datetime'])
+
+print dates
 
 # Put data onto firebase 
 for i in range(0, len(titles)):
-    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})	
+    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i], "date": dates[i]})	
     print result
