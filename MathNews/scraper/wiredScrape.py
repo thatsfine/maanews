@@ -4,10 +4,10 @@ import re
 from firebase import firebase
 
 # Connect to firebase
-firebase = firebase.FirebaseApplication('https://blistering-torch-2886.firebaseio.com/', None)
+firebase = firebase.FirebaseApplication('http://crackling-torch-4312.firebaseio.com', None)
 
 # Make the soup, real quick
-quMath_url = "http://www.wired.com/?s=math"
+quMath_url = "http://www.wired.com/?s=math+or+mathematics"
 page_html = urllib2.urlopen(quMath_url) 
 soup = BeautifulSoup(page_html)
 
