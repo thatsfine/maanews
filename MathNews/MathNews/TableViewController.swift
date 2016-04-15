@@ -8,11 +8,8 @@
 
 import UIKit
 import Firebase
-//check to see if EMAIL works
 
 class TableViewController: UITableViewController {
-    //MARK: Properties
-    
     //create empty arrays for titles, blurbs, urls
     var titleArray = [String]()
     var blurbArray = [String]()
@@ -51,6 +48,16 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Change the color of the navigation controller and text color
+        // self.navigationController?.navigationBar.barTintColor = UIColor.lightGrayColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 0.0/255.0, green: 137.0/255.0, blue: 237.0/255.0, alpha: 1.0) ]
+
+        //sets the table's background to white
+        self.tableView.backgroundColor = UIColor.whiteColor()
+        //gets rid of the unoccupied cells
+        tableView.tableFooterView = UIView(frame:CGRectZero)
+       
+
     }
 
     
@@ -77,22 +84,34 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentfier, forIndexPath: indexPath) as!ArticleTableViewCell
 
         //Configure the cell
-        
-        //Display title
+		//Display title
         cell.LinkLabel?.text = titleArray[indexPath.row]
         
         //Display blurb
         cell.ContentLabel?.text = blurbArray[indexPath.row]
         
+        // cell background color
+      
+            cell.backgroundColor = UIColor.clearColor()
+        
+        //the color change of the cell once its clicked
+        let cellBGView = UIView()
+        cellBGView.backgroundColor = UIColor(red: 237.0/255.0, green: 109.0/255.0, blue: 148.0/255.0, alpha: 1)
+        cell.selectedBackgroundView = cellBGView
+        
 
         return cell
     }
+ 
+
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("You selected cell #\(indexPath.row)!")
-
+        //unselects cell after being clicked
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
         //opens URLs to news articles
-        UIApplication.sharedApplication().openURL(NSURL(string: urlArray[indexPath.row])!)
-    
+        UIApplication.sharedApplication().openURL(NSURL(string: urlArray[indexPath.row])!)        
     }
     
     //
