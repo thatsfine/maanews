@@ -5,6 +5,7 @@
 # In[23]:
 
 from bs4 import BeautifulSoup, SoupStrainer
+from datetime import datetime
 import urllib2
 import re
 from firebase import firebase
@@ -38,6 +39,13 @@ for art in soup.find_all('h1', {'class': 'queue-article-title'}):
 blurbs = []
 for para in soup.find_all('div', {'class': 'queue-article-content'}):
 	blurbs.append((para.find('p')).string)
+
+# retrieve dates
+datesList= []
+for art in soup.find_all('div',{'class':'timestamp'}):
+	datesList.append(datetime.strptime(art.string,"%B %d, %Y"))
+# print datesList
+# date_ob= datetime.strptime(dateList[0], %b %d %Y)
 #print blurbs
 # print("Blurbs")
 # print(len(blurbs))
@@ -45,18 +53,32 @@ for para in soup.find_all('div', {'class': 'queue-article-content'}):
 # print(len(titles))
 # print("urls")
 # print(len(urList))
-# for i in range(len(blurbs)):
-# 	print titles[i]
+# for i in range(len(datesList)):
+# 	print datesList[i]
 # 	print urList[i]
 # 	print blurbs[i]
 
+# dictionary containing article info
+articleInfo= {'title': None, 'url': None, 'blurb': None, 'date': None}
+articlesDictList= []
+# puts values into array of dictionaries
+for i in range(len(datesList)):
+	articleInfo["title"] = titles[i]
+	articleInfo["url"] = urList[i]
+	articleInfo["blurb"] = blurbs[i]
+	articleInfo["date"] = datesList[i]
+	articlesDictList.append(articleInfo)
+
+for i in range(len(articlesDictList)):
+	print articlesDictList[i]
 
 
+return articlesDictList
 #Put data onto firebase 
 
-for i in range(0, len(titles)):
-	result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})
-	print result
+# for i in range(0, len(titles)):
+# 	result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})
+# 	print result
 
 
 
