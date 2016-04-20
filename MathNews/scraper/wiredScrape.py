@@ -4,7 +4,7 @@ import re
 from firebase import firebase
 
 # Connect to firebase
-firebase = firebase.FirebaseApplication('http://crackling-torch-4312.firebaseio.com', None)
+firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com', None)
 
 # Make the soup, real quick
 quMath_url = "http://www.wired.com/?s=math+or+mathematics"
