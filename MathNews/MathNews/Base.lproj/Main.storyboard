@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ssc-zV-W7b">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
@@ -34,19 +33,11 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.33092556499282411" green="0.57470431873125838" blue="0.90378950345353537" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-<<<<<<< HEAD
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ArticleTableViewCell" rowHeight="101" id="m41-6Q-iSl" customClass="ArticleTableViewCell" customModule="MathNews" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="600" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="m41-6Q-iSl" id="Nqe-SJ-dkr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100.5"/>
-=======
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleTableViewCell" rowHeight="100" id="m41-6Q-iSl" customClass="ArticleTableViewCell" customModule="MathNews" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="86" width="600" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" tableViewCell="m41-6Q-iSl" id="Nqe-SJ-dkr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
->>>>>>> UIDev
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uh-W3-jKC">

@@ -227,11 +227,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-<<<<<<< HEAD
 				LastUpgradeCheck = 0720;
-=======
-				LastUpgradeCheck = 0640;
->>>>>>> UIDev
 				ORGANIZATIONNAME = cs121MathNewApp;
 				TargetAttributes = {
 					41E86BD01C6C72DA00C046C8 = {
