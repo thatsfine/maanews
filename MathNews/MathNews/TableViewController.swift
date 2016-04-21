@@ -26,15 +26,41 @@ class TableViewController: UITableViewController {
         ref.observeEventType(.ChildAdded, withBlock: { snapshot in
         
         //grab titles, blurbs, and urls from firebase
-        let title = snapshot.value.objectForKey("title")!
-        let blurb = snapshot.value.objectForKey("blurb")!
-        let url = snapshot.value.objectForKey("url")!
+//        let title = snapshot.value.objectForKey("title")!
+//        let blurb = snapshot.value.objectForKey("blurb")!
+//        let url = snapshot.value.objectForKey("url")!
 
         //add titles, blurbs, and urls to respective array
         //and convert to strings
-        self.titleArray.append(title as! String)
-        self.blurbArray.append(blurb as! String)
-        self.urlArray.append(url as! String)
+       
+        if (snapshot.value.objectForKey("title") != nil)
+        {
+            let title = snapshot.value.objectForKey("title")!
+            self.titleArray.append(title as! String)
+        }
+        else if (snapshot.value.objectForKey("title") == nil)
+        {
+            self.titleArray.append("")
+        }
+        if (snapshot.value.objectForKey("blurb") != nil)
+        {
+            let blurb = snapshot.value.objectForKey("blurb")!
+            self.blurbArray.append(blurb as! String)
+        }
+        else if (snapshot.value.objectForKey("blurb") == nil)
+        {
+            self.blurbArray.append("")
+        }
+        if (snapshot.value.objectForKey("url") != nil)
+        {
+            let url = snapshot.value.objectForKey("url")!
+            self.urlArray.append(url as! String)
+        }
+        else if (snapshot.value.objectForKey("url") == nil)
+        {
+            self.urlArray.append("")
+        }
+
         
         //reload table with above data
         self.tableView.reloadData()
