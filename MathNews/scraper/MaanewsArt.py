@@ -12,41 +12,57 @@ firebase = firebase.FirebaseApplication('https://fiery-torch-8096.firebaseio.com
 
 
 # Make the soup, real quick
-quMath_url = "http://www.maa.org/math-in-the-news/rss.xml"
+quMath_url = "http://www.maa.org/news/rss.xml"
 page_html = urllib2.urlopen(quMath_url) 
 soup = BeautifulSoup(page_html)
+#soup = BeautifulSoup(page_html, "xml")
 
 
 
 # Find article titles and print them
+# titles = []
+# for art in soup.find_all(attrs={"class": "field-content"}):
+#      if '/news' in art:
+#      	print art
+     	#titles.append(art['title'])
+#print titles
+# titles = []
+# for art in soup.find_all('a'):
+# 	pair = (art.get('href'), art.text)
+# 	if '/news/' in pair[0]:
+# 		print art
 titles = []
 for art in soup.find_all('title'):
-     titles.append(art['title'])
-print titles
+	#fullTitle = art.find_all
+	#for x in art.find_all('script'):
+	#titles.append(art['title'])
+	# print art.string
+	titles.append(art.string)
+
+print titles	
 
 
+# # Sift for article urls and print them
+# urList=[]
+# for urls in soup.find_all('link'):
+# 	fullUrl = urls.find_all('a')[1]	#prints urls twice uses [1] to get first instance
+# 	if fullUrl.has_attr('href'):
+# 		urList.append(fullUrl['href'])
 
-# Sift for article urls and print them
-urList=[]
-for urls in soup.find_all('link'):
-	fullUrl = urls.find_all('a')[1]	#prints urls twice uses [1] to get first instance
-	if fullUrl.has_attr('href'):
-		urList.append(fullUrl['href'])
+# 		print fullUrl['href']
 
-		print fullUrl['href']
-
-print fullUrl['link']
+# print fullUrl['href']
 
 
-#Find blurbs
-blurbs = []
-for para in soup.find_all('description'):
-    blurbs.append('description')
+# #Find blurbs
+# blurbs = []
+# for para in soup.find_all('description'):
+#     blurbs.append('description')
 
-#Put data onto firebase 
-for i in range(0, len(titles)):
-    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})	
-    print result
+# #Put data onto firebase 
+# for i in range(0, len(titles)):
+#     result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})	
+#     print result
 
 
 
@@ -64,7 +80,7 @@ for i in range(0, len(titles)):
 # # Find article titles and print them
 # #blurbs = []
 # #for para in soup.find('p').getText():
-#  #   blurbs.append(para['data-listing-title'])
+#    #blurbs.append(para['data-listing-title'])
 # #print soup.find('p').getText()
 # result = firebase.post('/', soup.p)
 # print result
