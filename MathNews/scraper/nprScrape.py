@@ -4,7 +4,7 @@ import re
 from firebase import firebase
 
 # Connect to firebase
-firebase = firebase.FirebaseApplication('http://crackling-torch-4312.firebaseio.com', None)
+firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com/', None)
 
 # Make the soup, real quick
 quMath_url = "http://www.npr.org/templates/search/index.php?searchinput=math"
@@ -33,13 +33,20 @@ for para in soup.find_all('p', {'class': 'teaser'}):
 
 print blurbs
 
+#Get date of article
 dates = []
 for date in soup.find_all('span', {'class': 'date'}):
 	dates.append(date.string)
 
 print dates
 
+#Number of shares of article
+#For now, leave as 0
+shares = []
+for share in soup.find_all('h1', {'class': 'title'}):
+	shares.append(0)
+
 #Put data onto firebase 
 for i in range(0, len(titles)):
-    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i], "date": dates[i]})	
+    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i], "date": dates[i], "shares": shares[i]})	
     print result

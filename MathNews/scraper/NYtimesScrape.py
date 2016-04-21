@@ -5,7 +5,7 @@ from firebase import firebase
 
 
 # Connect to firebase
-firebase = firebase.FirebaseApplication('http://crackling-torch-4312.firebaseio.com', None)
+firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com', None)
 
 
 # Make the soup, real quick
@@ -43,7 +43,12 @@ for date in soup.find_all('time'):
 
 print dates
 
+#Number of shares, for now leave as 0
+shares = []
+for share in soup.find_all('a', {'class': 'story-link'}):
+	shares.append(0)
+
 # Put data onto firebase 
 for i in range(0, len(titles)):
-    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i], "date": dates[i]})	
+    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i], "date": dates[i], "shares": shares[i]})	
     print result
