@@ -40,7 +40,7 @@ class TableViewController: UITableViewController {
         }
         else if (snapshot.value.objectForKey("title") == nil)
         {
-            self.titleArray.append("")
+            self.titleArray.append(" ")
         }
         if (snapshot.value.objectForKey("blurb") != nil)
         {
@@ -49,7 +49,7 @@ class TableViewController: UITableViewController {
         }
         else if (snapshot.value.objectForKey("blurb") == nil)
         {
-            self.blurbArray.append("")
+            self.blurbArray.append(" ")
         }
         if (snapshot.value.objectForKey("url") != nil)
         {
@@ -58,10 +58,9 @@ class TableViewController: UITableViewController {
         }
         else if (snapshot.value.objectForKey("url") == nil)
         {
-            self.urlArray.append("")
+            self.urlArray.append(" ")
         }
 
-        
         //reload table with above data
         self.tableView.reloadData()
             
