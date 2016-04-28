@@ -24,14 +24,6 @@ class TableViewController: UITableViewController {
         
         // Retrieve new articles as they are added to your database
         ref.observeEventType(.ChildAdded, withBlock: { snapshot in
-        
-        //grab titles, blurbs, and urls from firebase
-//        let title = snapshot.value.objectForKey("title")!
-//        let blurb = snapshot.value.objectForKey("blurb")!
-//        let url = snapshot.value.objectForKey("url")!
-
-        //add titles, blurbs, and urls to respective array
-        //and convert to strings
        
         if (snapshot.value.objectForKey("title") != nil)
         {
@@ -60,13 +52,21 @@ class TableViewController: UITableViewController {
         {
             self.urlArray.append(" ")
         }
-
+        
+            
         //reload table with above data
         self.tableView.reloadData()
-            
+        
         }, withCancelBlock: { error in
                 print(error.description)
+                
+        })
         
+        ref.observeEventType(.ChildRemoved, withBlock: { snapshot in
+            self.titleArray = []
+            self.blurbArray = []
+            self.urlArray = []
+            self.tableView.reloadData()
         })
   
     }
@@ -81,7 +81,7 @@ class TableViewController: UITableViewController {
         self.tableView.backgroundColor = UIColor.whiteColor()
         //gets rid of the unoccupied cells
         tableView.tableFooterView = UIView(frame:CGRectZero)
-       
+
 
     }
 
