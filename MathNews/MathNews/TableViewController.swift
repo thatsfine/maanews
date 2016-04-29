@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class TableViewController: UITableViewController {
-    //create empty arrays for titles, blurbs, urls
+    //Create empty arrays for titles, blurbs, urls
     var titleArray = [String]()
     var blurbArray = [String]()
     var urlArray = [String]()
@@ -18,11 +18,11 @@ class TableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Create reference to database
-        // Currently references articles sub-category
+        //Create reference to database
+        //Currently references articles sub-category
         let ref = Firebase(url:"https://crackling-torch-4312.firebaseio.com/articles")
         
-        // Retrieve new articles as they are added to your database
+        //Retrieve new articles as they are added to your database
         ref.observeEventType(.ChildAdded, withBlock: { snapshot in
        
         if (snapshot.value.objectForKey("title") != nil)
@@ -54,7 +54,7 @@ class TableViewController: UITableViewController {
         }
         
             
-        //reload table with above data
+        //Reload table with above data
         self.tableView.reloadData()
         
         }, withCancelBlock: { error in
@@ -62,6 +62,8 @@ class TableViewController: UITableViewController {
                 
         })
         
+        //Clears arrays when something is deleted from the database
+        //because that means jeeves is pushing new articles
         ref.observeEventType(.ChildRemoved, withBlock: { snapshot in
             self.titleArray = []
             self.blurbArray = []
@@ -72,14 +74,16 @@ class TableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+       
         super.viewDidLoad()
+        
         //Change the color of the navigation controller and text color
-        // self.navigationController?.navigationBar.barTintColor = UIColor.lightGrayColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor(red: 0.0/255.0, green: 137.0/255.0, blue: 237.0/255.0, alpha: 1.0) ]
 
-        //sets the table's background to white
+        //Sets the table's background to white
         self.tableView.backgroundColor = UIColor.whiteColor()
-        //gets rid of the unoccupied cells
+        
+        //Gets rid of the unoccupied cells
         tableView.tableFooterView = UIView(frame:CGRectZero)
 
 
@@ -109,17 +113,18 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentfier, forIndexPath: indexPath) as!ArticleTableViewCell
 
         //Configure the cell
-		//Display title
+		
+        //Display title
         cell.LinkLabel?.text = titleArray[indexPath.row]
         
         //Display blurb
         cell.ContentLabel?.text = blurbArray[indexPath.row]
         
-        // cell background color
+        //Cell background color
       
-            cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clearColor()
         
-        //the color change of the cell once its clicked
+        //Change color of the cell once its clicked
         let cellBGView = UIView()
         cellBGView.backgroundColor = UIColor(red: 237.0/255.0, green: 109.0/255.0, blue: 148.0/255.0, alpha: 1)
         cell.selectedBackgroundView = cellBGView
@@ -127,15 +132,14 @@ class TableViewController: UITableViewController {
 
         return cell
     }
- 
 
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("You selected cell #\(indexPath.row)!")
-        //unselects cell after being clicked
+        //Unselects cell after being clicked
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        //opens URLs to news articles
+        //Opens URLs to news articles in Safari
         UIApplication.sharedApplication().openURL(NSURL(string: urlArray[indexPath.row])!)        
     }
     
