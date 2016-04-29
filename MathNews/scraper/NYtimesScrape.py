@@ -2,53 +2,55 @@ from bs4 import BeautifulSoup, SoupStrainer
 import urllib2
 import re
 from firebase import firebase
+from dateutil.parser import parse
 
 
-# Connect to firebase
-firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com', None)
+def nyt_out():
+	# Make the soup, real quick
+	quMath_url = "http://www.nytimes.com/topic/subject/mathematics"
+	page_html = urllib2.urlopen(quMath_url) 
+	soup = BeautifulSoup(page_html,"html.parser")
 
 
-# Make the soup, real quick
-quMath_url = "http://www.nytimes.com/topic/subject/mathematics"
-page_html = urllib2.urlopen(quMath_url) 
-soup = BeautifulSoup(page_html)
+	# Find article titles 
+	titles = []
+	for art in soup.find_all('h2',{'class': 'headline'}):
+	    titles.append(art.string.rstrip().lstrip())
+
+	# Sift for article urls 
+	urList=[]
+	for urls in soup.find_all('a', {'class': 'story-link'}):
+		urList.append(urls['href'])
+
+	# Find blurbs
+	blurbs = []
+	for para in soup.find_all('p', {'itemprop': 'description'}):
+	    blurbs.append(para.string)
 
 
-# Find article titles and print them
-titles = []
-for art in soup.find_all('img'):
-    titles.append(art['alt'])
-print titles
+	# Get dates for each article with format checking
+	dates = []
+	for date in soup.find_all('time'):
+		try:
+			dates.append(parse(date['datetime']))
+		except:
+			dates.append(date.now())
 
 
-# Sift for article urls and print them
-urList=[]
-for urls in soup.find_all('a', {'class': 'story-link'}):
-	urList.append(urls['href'])
 
-print urList
+	# dictionary containing article info
+	articleInfo= {'title': None, 'url': None, 'blurb': None, 'date': None, 'shares': None}
+	articlesDictList= []
+	# puts values into array of dictionaries
+	for i in range(len(dates)):
+		articleInfo["title"] = titles[i]
+		articleInfo["url"] = urList[i]
+		articleInfo["blurb"] = blurbs[i]
+		articleInfo["date"] = dates[i]
+		articlesDictList.append(articleInfo.copy())
+	# return list of articles in dictionary format
+	return articlesDictList
 
 
-# Find blurbs
-blurbs = []
-for para in soup.find_all('p', {'itemprop': 'description'}):
-    blurbs.append(para.string)
 
-print blurbs
 
-# Get dates for each article
-dates = []
-for date in soup.find_all('time'):
-	dates.append(date['datetime'])
-
-print dates
-
-#Number of shares, for now leave as 0
-shares = []
-for share in soup.find_all('a', {'class': 'story-link'}):
-	shares.append(0)
-
-# Put data onto firebase 
-for i in range(0, len(titles)):
-    result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i], "date": dates[i], "shares": shares[i]})	
-    print result
