@@ -15,7 +15,6 @@
 		41E86BDC1C6C72DA00C046C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDA1C6C72DA00C046C8 /* Main.storyboard */; };
 		41E86BDE1C6C72DA00C046C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDD1C6C72DA00C046C8 /* Images.xcassets */; };
 		41E86BE11C6C72DA00C046C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDF1C6C72DA00C046C8 /* LaunchScreen.xib */; };
-		866B4F1A1C87680C00C8AE90 /* webViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866B4F191C87680C00C8AE90 /* webViewLink.swift */; };
 		866EE9C11C8E082E005798F6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C01C8E082E005798F6 /* CFNetwork.framework */; };
 		866EE9C31C8E0837005798F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C21C8E0837005798F6 /* SystemConfiguration.framework */; };
 		866EE9C51C8E0840005798F6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C41C8E0840005798F6 /* Security.framework */; };
@@ -23,6 +22,7 @@
 		866EE9C91C8E0854005798F6 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C81C8E0854005798F6 /* libicucore.tbd */; };
 		866EE9CB1C8E0861005798F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9CA1C8E0861005798F6 /* Foundation.framework */; };
 		91CDB29D6D55A0BC7A12E8E0 /* libPods-MathNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1998C0D63A979ED9CEFC135 /* libPods-MathNews.a */; };
+		E3D8F5961CCAA16400B3D70D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BD51C6C72DA00C046C8 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,12 +51,11 @@
 		41E86BD61C6C72DA00C046C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41E86BD81C6C72DA00C046C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		41E86BDB1C6C72DA00C046C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		41E86BDD1C6C72DA00C046C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		41E86BDD1C6C72DA00C046C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MathNews/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		41E86BE01C6C72DA00C046C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		41E86BE61C6C72DA00C046C8 /* MathNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E86BEB1C6C72DA00C046C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41E86BEC1C6C72DA00C046C8 /* MathNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathNewsTests.swift; sourceTree = "<group>"; };
-		866B4F191C87680C00C8AE90 /* webViewLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webViewLink.swift; sourceTree = "<group>"; };
 		866EE9C01C8E082E005798F6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		866EE9C21C8E0837005798F6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		866EE9C41C8E0840005798F6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -133,7 +132,6 @@
 				41E86BD61C6C72DA00C046C8 /* AppDelegate.swift */,
 				41E86BD81C6C72DA00C046C8 /* ViewController.swift */,
 				41E86BDA1C6C72DA00C046C8 /* Main.storyboard */,
-				866B4F191C87680C00C8AE90 /* webViewLink.swift */,
 				41D9BF241C7417C700F8AFD4 /* TableViewController.swift */,
 				41D9BF251C7417C700F8AFD4 /* TableViewController.xib */,
 				4114F98F1C72F9C100C2B0C5 /* ArticleTableViewCell.swift */,
@@ -267,6 +265,7 @@
 				41E86BDC1C6C72DA00C046C8 /* Main.storyboard in Resources */,
 				41E86BE11C6C72DA00C046C8 /* LaunchScreen.xib in Resources */,
 				41E86BDE1C6C72DA00C046C8 /* Images.xcassets in Resources */,
+				E3D8F5961CCAA16400B3D70D /* Info.plist in Resources */,
 				41D9BF271C7417C700F8AFD4 /* TableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,7 +332,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				866B4F1A1C87680C00C8AE90 /* webViewLink.swift in Sources */,
 				41E86BD91C6C72DA00C046C8 /* ViewController.swift in Sources */,
 				4114F9901C72F9C100C2B0C5 /* ArticleTableViewCell.swift in Sources */,
 				41E86BD71C6C72DA00C046C8 /* AppDelegate.swift in Sources */,
