@@ -15,7 +15,6 @@
 		41E86BDC1C6C72DA00C046C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDA1C6C72DA00C046C8 /* Main.storyboard */; };
 		41E86BDE1C6C72DA00C046C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDD1C6C72DA00C046C8 /* Images.xcassets */; };
 		41E86BE11C6C72DA00C046C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E86BDF1C6C72DA00C046C8 /* LaunchScreen.xib */; };
-		866B4F1A1C87680C00C8AE90 /* webViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866B4F191C87680C00C8AE90 /* webViewLink.swift */; };
 		866EE9C11C8E082E005798F6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C01C8E082E005798F6 /* CFNetwork.framework */; };
 		866EE9C31C8E0837005798F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C21C8E0837005798F6 /* SystemConfiguration.framework */; };
 		866EE9C51C8E0840005798F6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 866EE9C41C8E0840005798F6 /* Security.framework */; };
@@ -26,13 +25,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		410FEA441C916E0C008FC836 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 41E86BC91C6C72DA00C046C8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 41E86BE51C6C72DA00C046C8;
-			remoteInfo = MathNewsTests;
-		};
 		41E86BE71C6C72DA00C046C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 41E86BC91C6C72DA00C046C8 /* Project object */;
@@ -56,7 +48,6 @@
 		41E86BE61C6C72DA00C046C8 /* MathNewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathNewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41E86BEB1C6C72DA00C046C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41E86BEC1C6C72DA00C046C8 /* MathNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathNewsTests.swift; sourceTree = "<group>"; };
-		866B4F191C87680C00C8AE90 /* webViewLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webViewLink.swift; sourceTree = "<group>"; };
 		866EE9C01C8E082E005798F6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		866EE9C21C8E0837005798F6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		866EE9C41C8E0840005798F6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -133,7 +124,6 @@
 				41E86BD61C6C72DA00C046C8 /* AppDelegate.swift */,
 				41E86BD81C6C72DA00C046C8 /* ViewController.swift */,
 				41E86BDA1C6C72DA00C046C8 /* Main.storyboard */,
-				866B4F191C87680C00C8AE90 /* webViewLink.swift */,
 				41D9BF241C7417C700F8AFD4 /* TableViewController.swift */,
 				41D9BF251C7417C700F8AFD4 /* TableViewController.xib */,
 				4114F98F1C72F9C100C2B0C5 /* ArticleTableViewCell.swift */,
@@ -195,7 +185,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				410FEA451C916E0C008FC836 /* PBXTargetDependency */,
 			);
 			name = MathNews;
 			productName = MathNews;
@@ -333,7 +322,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				866B4F1A1C87680C00C8AE90 /* webViewLink.swift in Sources */,
 				41E86BD91C6C72DA00C046C8 /* ViewController.swift in Sources */,
 				4114F9901C72F9C100C2B0C5 /* ArticleTableViewCell.swift in Sources */,
 				41E86BD71C6C72DA00C046C8 /* AppDelegate.swift in Sources */,
@@ -351,11 +339,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		410FEA451C916E0C008FC836 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 41E86BE51C6C72DA00C046C8 /* MathNewsTests */;
-			targetProxy = 410FEA441C916E0C008FC836 /* PBXContainerItemProxy */;
-		};
 		41E86BE81C6C72DA00C046C8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 41E86BD01C6C72DA00C046C8 /* MathNews */;
@@ -400,7 +383,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -425,6 +409,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "c6d7dcb7-541b-42f5-bfb9-52baa186212b";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -447,7 +432,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -464,6 +450,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "c6d7dcb7-541b-42f5-bfb9-52baa186212b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -474,14 +461,14 @@
 			baseConfigurationReference = 9DE8E59E5B1C5A2081EC0936 /* Pods-MathNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
 				INFOPLIST_FILE = MathNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c6d7dcb7-541b-42f5-bfb9-52baa186212b";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -491,14 +478,14 @@
 			baseConfigurationReference = B0F9F677F1EA2631D695B815 /* Pods-MathNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: charlie.watson95@gmail.com (2ZA682W2JS)";
 				INFOPLIST_FILE = MathNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cs121.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c6d7dcb7-541b-42f5-bfb9-52baa186212b";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
