@@ -1,8 +1,4 @@
-
 # coding: utf-8
-
-# In[1]:
-
 from bs4 import BeautifulSoup, SoupStrainer
 import urllib2
 import re
@@ -21,9 +17,6 @@ from NYtimesScrape import nyt_out
 from wiredScrape import wired_out
 from MaanewsArt import maa_out
 
-
-# In[2]:
-
 # Define last week in datetime
 from dateutil.relativedelta import relativedelta, FR
 from datetime import datetime, date
@@ -36,8 +29,6 @@ fourwks=datetime.combine(date.today()-relativedelta(days=28), datetime.min.time(
 fivewks=datetime.combine(date.today()-relativedelta(days=35), datetime.min.time())
 sixwks=datetime.combine(date.today()-relativedelta(days=42), datetime.min.time())
 sevenwks=datetime.combine(date.today()-relativedelta(days=49), datetime.min.time())
-
-
 
 # allocates scores depending on when article was published
 def set_score(temp_i):
@@ -58,108 +49,121 @@ def set_score(temp_i):
 		temp_i['score']+=4
 	elif (sixwks>=temp_date>=sevenwks):
 		temp_i['score']+=2
-	
+
 # Call mathless scraper
-mathless_tmp=mathless_out()
-for i in range(len(mathless_tmp)):
-	# set default score based of website
-	mathless_tmp[i]['score']=2
-	# set score
-	set_score(mathless_tmp[i])
-	
-		
+try:
+	mathless_tmp=mathless_out()
+	for i in range(len(mathless_tmp)):
+		# set default score based onwebsite
+		mathless_tmp[i]['score']=2
+		# set score
+		set_score(mathless_tmp[i])
+except:
+	print 'Math Less Traveled scraper has failed, site architecture may have changed, please reevaluate scraper code'
+
 # Call nsf scraper
-nsf_temp=nsf_out()
-for i in range(len(nsf_temp)):
-	# set default score based of website
-	nsf_temp[i]['score']=3
-	
-	# set final score based on date
-	set_score(nsf_temp[i])
-	
+try:
+	nsf_temp=nsf_out()
+	for i in range(len(nsf_temp)):
+		# set default score based on website
+		nsf_temp[i]['score']=3
+		# set final score based on date
+		set_score(nsf_temp[i])
+except:
+	print 'NSF scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
 # call quartz scraper
-quartz_temp = quartz_out()
-for i in range(len(quartz_temp)):
-	# set default score based on website
-	quartz_temp[i]['score']=4
-	# set final score based on date
-	set_score(quartz_temp[i])
-	
+try:
+	quartz_temp = quartz_out()
+	for i in range(len(quartz_temp)):
+		# set default score based on website
+		quartz_temp[i]['score']=4
+		# set final score based on date
+		set_score(quartz_temp[i])
+except:
+	print 'Quartz scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
 # call plusmath scraper
-plusmath_temp = plusmath_out()
-for i in range(len(plusmath_temp)):
-	# set default score based on website
-	plusmath_temp[i]['score']=1
-	set_score(plusmath_temp[i])
-	
-	
-	
-# call forbes scraper
-forbes_temp = forbes_out()
-for i in range(len(forbes_temp)):
-	# set default score based on website
-	forbes_temp[i]['score']=5
-	# set final score based on date
-	set_score(forbes_temp[i])
+try:
+	plusmath_temp = plusmath_out()
+	for i in range(len(plusmath_temp)):
+		# set default score based on website
+		plusmath_temp[i]['score']=1
+		# set final score based on date
+		set_score(plusmath_temp[i])
+except:
+	print 'PlusMath scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
-	
+# call forbes scraper
+try:
+	forbes_temp = forbes_out()
+	for i in range(len(forbes_temp)):
+		# set default score based on website
+		forbes_temp[i]['score']=5
+		# set final score based on date
+		set_score(forbes_temp[i])
+except:
+	print 'Forbes scraper has failed, site architecture may have changed, please reevaluate scraper code'
+
 # call sciAm scraper
-sciAm_temp = sciAm_out()
-for i in range(len(sciAm_temp)):
-	# set default score based on website
-	sciAm_temp[i]['score']=6
-	# set final score based on date
-	set_score(sciAm_temp[i])
-	
+try:
+	sciAm_temp = sciAm_out()
+	for i in range(len(sciAm_temp)):
+		# set default score based on website
+		sciAm_temp[i]['score']=6
+		# set final score based on date
+		set_score(sciAm_temp[i])
+except:
+	print 'Scientific American scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
 # call phys scraper
-phys_temp = phys_out()
-for i in range(len(phys_temp)):
-	# set default score based on website
-	phys_temp[i]['score']=7
-	# set final score based on date
-	set_score(phys_temp[i])
-	
-	
-
+try:
+	phys_temp = phys_out()
+	for i in range(len(phys_temp)):
+		# set default score based on website
+		phys_temp[i]['score']=7
+		# set final score based on date
+		set_score(phys_temp[i])
+except:
+	print 'Phys.org scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
 # call nyt scraper
-nyt_temp = nyt_out()
-for i in range(len(nyt_temp)):
-	# set default score based on website
-	nyt_temp[i]['score']=9
-	# set final score based on date
-	set_score(nyt_temp[i])
-	
-   
-
+try:
+	nyt_temp = nyt_out()
+	for i in range(len(nyt_temp)):
+		# set default score based on website
+		nyt_temp[i]['score']=9
+		# set final score based on date
+		set_score(nyt_temp[i])
+except:
+	print 'New York Times scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
 # call wired scraper
-wired_temp = wired_out()
-for i in range(len(wired_temp)):
-	# set default score based on website
-	wired_temp[i]['score']=8
-	# set final score based on date
-	set_score(wired_temp[i])
-	
+try:
+	wired_temp = wired_out()
+	for i in range(len(wired_temp)):
+		# set default score based on website
+		wired_temp[i]['score']=8
+		# set final score based on date
+		set_score(wired_temp[i])
+except:
+	print 'Wired scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
 # call maa scraper
-maa_temp = maa_out()
-for i in range(len(maa_temp)):
-	# set default score based on website
-	maa_temp[i]['score']=10
-	# set final score based on date
-	set_score(maa_temp[i])
-	
-	
+try:
+	maa_temp = maa_out()
+	for i in range(len(maa_temp)):
+		# set default score based on website
+		maa_temp[i]['score']=10
+		# set final score based on date
+		set_score(maa_temp[i])
+except:
+	print 'MAA scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
 # Concatenate all scraped results into one big list
-all_arts = plusmath_temp
-# maa_temp + nyt_temp + wired_temp +  phys_temp + sciAm_temp +forbes_temp  +  quartz_temp + mathless_tmp + nsf_temp
+all_arts = plusmath_temp + maa_temp + nyt_temp + wired_temp + phys_temp + sciAm_temp + forbes_temp + quartz_temp + mathless_tmp + nsf_temp
 
-# uniquifys the articles
+# uniquify the articles
 all_arts =list({v['title']:v for v in all_arts}.values())
 
 # Import itemgetter to construct lambada function for sorter
@@ -168,17 +172,8 @@ from operator import itemgetter
 # Sort the list of articles by descending score value
 all_arts=sorted(all_arts, key=itemgetter('score'), reverse=True)
 
-
-# In[3]:
-
 # Connect to firebase, wipe it, and start fresh with the new sorted list of articles
 firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com/', None)
 firebase.delete('/articles', '')
 for i in range(len(all_arts)):
 	result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title']})
-
-
-# In[5]:
-
-
-
