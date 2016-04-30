@@ -17,7 +17,7 @@ def quartz_out():
 
 
 
-	# Find article titles and urls and print them
+	# Find article titles and urls 
 	titles = []
 	urList = []
 	for art in soup.find_all('h1', {'class': 'queue-article-title'}):
@@ -32,7 +32,7 @@ def quartz_out():
 	for para in soup.find_all('div', {'class': 'queue-article-content'}):
 		blurbs.append((para.find('p')).string)
 		
-	# retrieve dates
+	# retrieve dates and checks format
 	datesList= []
 	for art in soup.find_all('div',{'class':'timestamp'}):
 		try:
@@ -55,7 +55,7 @@ def quartz_out():
 		articleInfo["date"] = datesList[i]
 		articlesDictList.append(articleInfo.copy())
 
-
+	# returns articles
 	return articlesDictList
 
 

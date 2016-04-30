@@ -1,86 +1,63 @@
-##maanews
+# coding: utf-8
 
 from bs4 import BeautifulSoup, SoupStrainer
 import urllib2
 import re
 from firebase import firebase
+from dateutil.parser import parse
+from datetime import date
 
-# Connect to firebase
-#firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com/', None)
-firebase = firebase.FirebaseApplication('https://fiery-torch-8096.firebaseio.com/', None)
+def maa_out():
+	# Make the soup, real quick
+	quMath_url = "http://www.maa.org/news/rss.xml"
+	page_html = urllib2.urlopen(quMath_url) 
+	soup = BeautifulSoup(page_html,"html.parser")
 
+	# list of titles,urls,and blurbs
+	titles = []
+	urList = []
+	blurbs = []
 
+	# puts titles and urls into respective lists
+	for art in soup.find_all('item'):
+		titles.append(art.find('title').string)
+		urList.append(art.find('link').string)
 
-# Make the soup, real quick
-quMath_url = "http://www.maa.org/news/rss.xml"
-page_html = urllib2.urlopen(quMath_url) 
-soup = BeautifulSoup(page_html)
-#soup = BeautifulSoup(page_html, "xml")
+	# dates
+	dates = []
+	# goes into each url that was found
+	# and extracts the date
+	for i in range(len(urList)):
+		art_html = urllib2.urlopen(urList[i])
+		mini_soup = BeautifulSoup(art_html,"html.parser")
 
-
-
-# Find article titles and print them
-# titles = []
-# for art in soup.find_all(attrs={"class": "field-content"}):
-#      if '/news' in art:
-#      	print art
-     	#titles.append(art['title'])
-#print titles
-# titles = []
-# for art in soup.find_all('a'):
-# 	pair = (art.get('href'), art.text)
-# 	if '/news/' in pair[0]:
-# 		print art
-titles = []
-for art in soup.find_all('title'):
-	#fullTitle = art.find_all
-	#for x in art.find_all('script'):
-	#titles.append(art['title'])
-	# print art.string
-	titles.append(art.string)
-
-print titles	
+		for date in mini_soup.find_all('span',{'class':'date-display-single'}):
+			# gets the date and if it fails,
+			# give it the current date
+			try:
+				dates.append(parse(date.string))
+			except:
+				dates.append(date.now())
 
 
-# # Sift for article urls and print them
-# urList=[]
-# for urls in soup.find_all('link'):
-# 	fullUrl = urls.find_all('a')[1]	#prints urls twice uses [1] to get first instance
-# 	if fullUrl.has_attr('href'):
-# 		urList.append(fullUrl['href'])
-
-# 		print fullUrl['href']
-
-# print fullUrl['href']
+	# blurbs couldn't be extracted so a generic
+	# MAA description was inserted for MAA articles
+	for i in range (len(titles)):     
+		blurbs.append("The Mathematical Association of America is the largest professional society that focuses on making mathematics accessible at the undergraduate level.")
 
 
-# #Find blurbs
-# blurbs = []
-# for para in soup.find_all('description'):
-#     blurbs.append('description')
+	# dictionary containing article info
+	articleInfo= {'title': None, 'url': None, 'blurb': None, 'date': None, 'shares': None}
+	articlesDictList= []
+	# puts values into array of dictionaries
+	for i in range(len(titles)):
+		articleInfo["title"] = titles[i]
+		articleInfo["url"] = urList[i]
+		articleInfo["blurb"] = blurbs[i]
+		articleInfo["date"] = dates[i]
+		articlesDictList.append(articleInfo.copy())
+		
+	# returns list of articles in dic format
+	return articlesDictList
 
-# #Put data onto firebase 
-# for i in range(0, len(titles)):
-#     result = firebase.post('/articles', {"blurb": blurbs[i], "url": urList[i], "title": titles[i]})	
-#     print result
 
-
-
-
-
-
-# In[ ]:
-#Now for the blurb: turn each url into a soup 
-#Possible starter method to scrape blurbs if the main page doesnt already have them
-
-# for k in range(0, len(urList)):
-# quMath_url = urList[2*k]
-# page_html = urllib2.urlopen(quMath_url) 
-# soup = BeautifulSoup(page_html)
-# # Find article titles and print them
-# #blurbs = []
-# #for para in soup.find('p').getText():
-#    #blurbs.append(para['data-listing-title'])
-# #print soup.find('p').getText()
-# result = firebase.post('/', soup.p)
-# print result
