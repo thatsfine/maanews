@@ -9,7 +9,6 @@
 import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
-    //MARK: Properties
     
     @IBOutlet weak var LinkLabel: UILabel!
     @IBOutlet weak var ContentLabel: UILabel!
@@ -21,7 +20,6 @@ class ArticleTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
