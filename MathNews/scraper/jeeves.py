@@ -173,7 +173,7 @@ from operator import itemgetter
 all_arts=sorted(all_arts, key=itemgetter('score'), reverse=True)
 
 # Connect to firebase, wipe it, and start fresh with the new sorted list of articles
-firebase = firebase.FirebaseApplication('https://crackling-torch-4312.firebaseio.com/', None)
+firebase = firebase.FirebaseApplication('https://sweltering-heat-2148.firebaseio.com/', None)
 firebase.delete('/articles', '')
 for i in range(len(all_arts)):
 	result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title']})

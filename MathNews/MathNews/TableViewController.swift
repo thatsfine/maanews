@@ -22,7 +22,7 @@ class TableViewController: UITableViewController {
         super.viewDidAppear(animated)
 
         // Create reference to database at the "articles" sub-category
-        let ref = Firebase(url:"https://crackling-torch-4312.firebaseio.com/articles")
+        let ref = Firebase(url:"https://sweltering-heat-2148.firebaseio.com/articles")
 
         // Retrieve new articles as they are added to your database, if no value is present for a given key, give the tableview a " "
         // instead of an empty string to avoid breaking it
