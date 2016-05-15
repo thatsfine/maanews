@@ -12,6 +12,7 @@ class ArticleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var LinkLabel: UILabel!
     @IBOutlet weak var ContentLabel: UILabel!
+    @IBOutlet weak var UrlLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

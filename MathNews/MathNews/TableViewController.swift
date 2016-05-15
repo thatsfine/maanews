@@ -114,13 +114,14 @@ class TableViewController: UITableViewController {
 
         //Display title
         cell.LinkLabel?.text = titleArray[indexPath.row]
+        
+        //Display url
+        if let match = urlArray[indexPath.row].rangeOfString("(?<=//)(w*.*?)(?=/)", options: .RegularExpressionSearch) {
+            cell.UrlLabel?.text = " " + urlArray[indexPath.row].substringWithRange(match)
+        }
 
         //Display blurb
-        if let match = urlArray[indexPath.row].rangeOfString("(?<=//)(w*.*?)(?=/)", options: .RegularExpressionSearch) {
-            cell.ContentLabel?.text = urlArray[indexPath.row].substringWithRange(match) + "\n" + blurbArray[indexPath.row]
-            
-        }
-        //cell.ContentLabel?.text = blurbArray[indexPath.row]
+        cell.ContentLabel?.text = blurbArray[indexPath.row]
         
         
         // cell background color
