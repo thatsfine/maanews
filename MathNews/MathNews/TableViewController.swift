@@ -116,8 +116,13 @@ class TableViewController: UITableViewController {
         cell.LinkLabel?.text = titleArray[indexPath.row]
 
         //Display blurb
-        cell.ContentLabel?.text = blurbArray[indexPath.row]
-
+        if let match = urlArray[indexPath.row].rangeOfString("(?<=//)(w*.*?)(?=/)", options: .RegularExpressionSearch) {
+            cell.ContentLabel?.text = urlArray[indexPath.row].substringWithRange(match) + "\n" + blurbArray[indexPath.row]
+            
+        }
+        //cell.ContentLabel?.text = blurbArray[indexPath.row]
+        
+        
         // cell background color
         cell.backgroundColor = UIColor.clearColor()
 
