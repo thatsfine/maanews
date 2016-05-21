@@ -23,14 +23,14 @@ def plusmath_out():
 	articlesWithDates= soup.find("div", class_ = "view-content")
 	# puts titles and urls into their respective lists
 	for art in articlesWithDates.find_all('div', {'class': 'views-field-title'}):
-		titles.append(art.find('span').find('a').string)
+		titles.append(art.find('span').find('a').text)
 		urList.append('https://plus.maths.org'+ art.find('span').find('a', href=re.compile)['href'])
 	# list of dates
 	datesList = []
 	# puts dates in list with format check
 	for art in articlesWithDates.find_all('div', {'class': 'views-field-created'}):
 		try:
-			datesList.append(datetime.strptime(art.find('span').string,"%B %d, %Y"))
+			datesList.append(datetime.strptime(art.find('span').text,"%B %d, %Y"))
 		except ValueError:
 			datesList.append(datetime.now())
 	# list of blurbs
@@ -39,19 +39,13 @@ def plusmath_out():
 	# 3 formats blurbs were done in website
 	for art in articlesWithDates.find_all('div', {'class': 'views-field-field-abs-txt-value'}):
 		try:
-			blurbs.append(art.find('div').find('p').string)
+			blurbs.append(art.find('div').find('p').text)
 		except:
-			blurbs.append(art.find('div').string)
+			blurbs.append(art.find('div').text)
 			try:
-				blurbs.append(art.find('span').find('a').string)
+				blurbs.append(art.find('span').find('a').text)
 			except:
 				"something went wrong with plusMath"
-
-
-		
-		
-
-
 
 
 	# dictionary containing article info

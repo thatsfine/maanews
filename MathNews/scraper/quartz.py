@@ -15,22 +15,17 @@ def quartz_out():
 	page_html = urllib2.urlopen(quartz_url) 
 	soup = BeautifulSoup(page_html,"html.parser")
 
-
-
 	# Find article titles and urls 
 	titles = []
 	urList = []
 	for art in soup.find_all('h1', {'class': 'queue-article-title'}):
-	    titles.append((art.find('a')).string)
-	    urList.append((art.find('a', href=re.compile)['href']))
-
-
-
+	    titles.append((art.find('a')).text)
+	    urList.append((art.find('a')['href']))
 
 	#Find blurbs
 	blurbs = []
 	for para in soup.find_all('div', {'class': 'queue-article-content'}):
-		blurbs.append((para.find('p')).string)
+		blurbs.append((para.find('p')).text)
 		
 	# retrieve dates and checks format
 	datesList= []
@@ -39,10 +34,6 @@ def quartz_out():
 			datesList.append(datetime.strptime(art.string,"%B %d, %Y"))
 		except ValueError:
 			datesList.append(datetime.now())
-
-
-
-
 
 	# dictionary containing article info
 	articleInfo= {'title': None, 'url': None, 'blurb': None, 'date': None, 'shares': None}
