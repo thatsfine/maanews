@@ -169,13 +169,19 @@ all_arts =list({v['title']:v for v in all_arts}.values())
 # Import itemgetter to construct lambada function for sorter
 from operator import itemgetter
 
-# Sort the list of articles by descending score value
-all_arts=sorted(all_arts, key=itemgetter('score'), reverse=True)
+# Sort the list of articles by descending date
+all_arts=sorted(all_arts, key=itemgetter('date'), reverse=True)
+# Sort the list by descending score (see above)
+#all_arts=sorted(all_arts, key=itemgetter('score'), reverse=True)
 
 # Connect to firebase, wipe it, and start fresh with the new sorted list of articles
 firebase = firebase.FirebaseApplication('https://sweltering-heat-2148.firebaseio.com/', None)
 firebase.delete('/articles', '')
+# if you want all articles
 for i in range(len(all_arts)):
-        result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title'], "date": all_arts[i]['date']})
+# if you want first 25 articles
+#for i in range(0,25):
+	if all_arts[i]['date'] > datetime.combine(date.today()-relativedelta(days=60), datetime.min.time()):
+		result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title'], "date": all_arts[i]['date']})
 #	result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title']})
 
