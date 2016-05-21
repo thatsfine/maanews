@@ -16,7 +16,8 @@ class TableViewController: UITableViewController {
     var titleArray = [String]()
     var blurbArray = [String]()
     var urlArray = [String]()
-
+    var dateArray = [String]()
+    
     // Pull down the article metadata into Swift
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -55,6 +56,17 @@ class TableViewController: UITableViewController {
         {
             self.urlArray.append(" ")
         }
+        if (snapshot.value.objectForKey("date") != nil)
+        {
+            let date = snapshot.value.objectForKey("date")!
+            print(date as! String)
+            self.dateArray.append(date as! String)
+        }
+        /* else if (snapshot.value.objectForKey("date") == nil)
+        {
+            self.dateArray.append(put some alternate date here)
+        }
+        */
 
         // Reload table with above data
         self.tableView.reloadData()
@@ -117,7 +129,7 @@ class TableViewController: UITableViewController {
         
         //Display url
         if let match = urlArray[indexPath.row].rangeOfString("(?<=//)(w*.*?)(?=/)", options: .RegularExpressionSearch) {
-            cell.UrlLabel?.text = " " + urlArray[indexPath.row].substringWithRange(match)
+            cell.UrlLabel?.text = " " + urlArray[indexPath.row].substringWithRange(match) + "   " + dateArray[indexPath.row]
         }
 
         //Display blurb
