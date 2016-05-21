@@ -16,6 +16,7 @@ from forbes import forbes_out
 from NYtimesScrape import nyt_out
 from wiredScrape import wired_out
 from MaanewsArt import maa_out
+from quanta import quanta_out
 
 # Define last week in datetime
 from dateutil.relativedelta import relativedelta, FR
@@ -160,11 +161,23 @@ try:
 except:
 	print 'MAA scraper has failed, site architecture may have changed, please reevaluate scraper code'
 
+# call quanta scraper
+try:
+	quanta_temp = quanta_out()
+	for i in range(len(quanta_temp)):
+		# set default score based on website
+		quanta_temp[i]['score']=10
+		# set final score based on date
+		set_score(quanta_temp[i])
+except:
+	print 'Quanta scraper has failed, site architecture may have changed, please reevaluate scraper code'
+
+
 # Concatenate all scraped results into one big list
-all_arts = plusmath_temp + maa_temp + nyt_temp + wired_temp + phys_temp + sciAm_temp + forbes_temp + quartz_temp + mathless_tmp + nsf_temp
+all_arts = plusmath_temp + maa_temp + nyt_temp + wired_temp + phys_temp + sciAm_temp + forbes_temp + quartz_temp + mathless_tmp + nsf_temp + quanta_temp
 
 # uniquify the articles
-all_arts =list({v['title']:v for v in all_arts}.values())
+all_arts =list({v['blurb']:v for v in all_arts}.values())
 
 # Import itemgetter to construct lambada function for sorter
 from operator import itemgetter
@@ -181,7 +194,6 @@ firebase.delete('/articles', '')
 for i in range(len(all_arts)):
 # if you want first 25 articles
 #for i in range(0,25):
-	if all_arts[i]['date'] > datetime.combine(date.today()-relativedelta(days=60), datetime.min.time()):
-		result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title'], "date": all_arts[i]['date']})
-#	result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title']})
+#	if all_arts[i]['date'] > datetime.combine(date.today()-relativedelta(days=60), datetime.min.time()):
+	result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title'], "date": all_arts[i]['date']})
 
