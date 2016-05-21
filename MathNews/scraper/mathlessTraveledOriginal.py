@@ -1,5 +1,4 @@
 
-
 # coding: utf-8
 
 # In[23]:
@@ -22,8 +21,8 @@ def mathless_out():
     titles = []
     urList = []
     for art in soup.find_all('h2', {'class': 'entry-title'}):
-        titles.append((art.find('a')).string)
-        urList.append((art.find('a', href=re.compile)['href']))
+        titles.append((art.find('a')).text)
+        urList.append(art.find('a')['href'])
 
     #No blurbs so feed it generic description of blog
     blurbs = []

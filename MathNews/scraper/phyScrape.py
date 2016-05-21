@@ -3,6 +3,7 @@ import urllib2
 import re
 from dateutil.parser import parse
 from datetime import date
+from datetime import datetime
 
 def phys_out():
     # Make the soup, real quick
@@ -24,24 +25,26 @@ def phys_out():
     for urls in soup.find_all('h3'):
         aTag = urls.find('a')
         urList.append(aTag['href'])
-        titleList.append(aTag.string)
+        titleList.append(aTag.text)
 
     # Find the blurbs in the soup and append them to a corresponding list (note the syntax used to search for a specific class)
     for divBlurbs in soup.find_all('div', {"class","news-box-text"}):
-        blurbs.append((divBlurbs.find('p')).string)
+        blurbs.append((divBlurbs.find('p')).text)
 
     # This for loop parses the scraped dates into datetime objects
-    #      The (dates[i].partition('i))[0] line cuts off some extraneous text that was scraped into the dates list
+    #      The (dates[i].partition('i'))[0] line cuts off some extraneous text that was scraped into the dates list
     #      If this partition method was not run, the parse method would fail because it was run on an erroneous input
     # The try/except catches for cases that fail the initial parse because their date is listed as "1 hour ago" and such
-    # we make their datetime object today's date
+    # we make their datetime object today's date if they contain the word "hours"
     for thing in soup.find_all('div', 'details large'):
         try:
-            #print(thing.contents[1].find_all(string=re.compile("n"))[0])
-            dates.append(parse(thing.contents[1].find_all(string=re.compile("n"))[0].partition('i')[0]))
-            #dates.append(parse((thing.contents[2].partition('i'))[0]))
+            dates.append(parse(thing.contents[1].find(string=re.compile("in")).partition('i')[0]))
+            #print thing.contents[1].find(string=re.compile("in")).partition('i')[0]
         except:
-            dates.append(date.today())
+            if thing.contents[1].find(string=re.compile("hours")):
+                dates.append(datetime.combine(date.today(),datetime.min.time()))
+            else: 
+                dates.append(datetime.combine(date.today(),datetime.min.time()))
 
     # Assembling the metadata into a list of dictionaries, which will be returned to our ever faithful jeeves.
     # Remember to construct the dictionary with these exact keys, because this specific format will be used by

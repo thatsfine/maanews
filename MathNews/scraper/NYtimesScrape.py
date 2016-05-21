@@ -11,11 +11,10 @@ def nyt_out():
 	page_html = urllib2.urlopen(quMath_url) 
 	soup = BeautifulSoup(page_html,"html.parser")
 
-
 	# Find article titles 
 	titles = []
 	for art in soup.find_all('h2',{'class': 'headline'}):
-	    titles.append(art.string.rstrip().lstrip())
+	    titles.append(art.text.strip())
 
 	# Sift for article urls 
 	urList=[]
@@ -25,8 +24,7 @@ def nyt_out():
 	# Find blurbs
 	blurbs = []
 	for para in soup.find_all('p', {'itemprop': 'description'}):
-	    blurbs.append(para.string)
-
+	    blurbs.append(para.text)
 
 	# Get dates for each article with format checking
 	dates = []
@@ -35,7 +33,6 @@ def nyt_out():
 			dates.append(parse(date['datetime']))
 		except:
 			dates.append(date.now())
-
 
 
 	# dictionary containing article info

@@ -24,9 +24,10 @@ def forbes_out():
 	blurbs = []
 	datesList = []
 	for art in soup.find_all('li', {'class': 'article edittools-contentitem'}):
-	    titles.append((art.find('article').find('h2').find('a')).string)
-	    urList.append(((art.find('article').find('h2')).find('a', href=re.compile)['href']))
-	   # encodes some chars to utf-8
+	    titles.append((art.find('article').find('h2').find('a')).text)
+	    #urList.append(((art.find('article').find('h2')).find('a', href=re.compile)['href']))
+	    urList.append(((art.find('article').find('h2')).find('a')['href']))
+	    # encodes some chars to utf-8
 	    s = art.find('article').find('p').text.encode("utf-8")
 	    # gets rid of 'read >>' string at the end of each blurb 
 	    blurbs.append(s[:-8])

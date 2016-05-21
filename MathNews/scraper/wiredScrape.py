@@ -7,15 +7,14 @@ from datetime import date
 
 def wired_out():
 	# Make the soup, real quick
-	quMath_url = "http://www.wired.com/?s=math+or+mathematics"
+	quMath_url = "http://www.wired.com/?s=mathematician"
 	page_html = urllib2.urlopen(quMath_url) 
 	soup = BeautifulSoup(page_html,"html.parser")
 
 	#Find article titles 
 	titles = []
 	for art in soup.find_all('h2', {'class': 'title brandon clamp-5'}):
-	    titles.append(art.string)
-
+	    titles.append(art.text)
 
 	# Sift for article urls 
 	urList=[]
@@ -23,12 +22,10 @@ def wired_out():
 		for urls2 in urls.find_all('a'):
 			urList.append(urls2.get('href'))
 
-
 	#Find blurbs
 	blurbs = []
 	for para in soup.find_all('p', {'class': 'exchange-sm clamp-3 marg-t-micro'}):
-	    blurbs.append(para.string)
-
+	    blurbs.append(para.text)
 
 	dates = []
 	for date in soup.find_all('time'):

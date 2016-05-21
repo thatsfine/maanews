@@ -20,8 +20,10 @@ def maa_out():
 
 	# puts titles and urls into respective lists
 	for art in soup.find_all('item'):
-		titles.append(art.find('title').string)
-		urList.append(art.find('link').string)
+		titles.append(art.find('title').text)
+		urList.append(art.find('link').text)
+#		blurbs.append(art.find('p').text)
+#		print art.find('description').find('p').text
 
 	# dates
 	dates = []
@@ -43,8 +45,7 @@ def maa_out():
 	# blurbs couldn't be extracted so a generic
 	# MAA description was inserted for MAA articles
 	for i in range (len(titles)):     
-		blurbs.append("The Mathematical Association of America is the largest professional society that focuses on making mathematics accessible at the undergraduate level.")
-
+		blurbs.append("News from the Mathematical Association of America.")
 
 	# dictionary containing article info
 	articleInfo= {'title': None, 'url': None, 'blurb': None, 'date': None, 'shares': None}

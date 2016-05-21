@@ -16,12 +16,13 @@ def sciAm_out():
 	urList = []
 	for art in soup.find_all('h2', {'class': 't_listing-title'}):
 	    titles.append(art.find('a').text)
-	    urList.append(art.find('a',href=re.compile)['href'])
+	    urList.append(art.find('a')['href'])
+            # not sure why this was here before: art.find('a',href=re.compile)['href']
 
 	#Find blurbs
 	blurbs=[]
 	for para in soup.find_all('p', class_='t_body listing-wide__inner__desc'):
-		blurbs.append(para.string)
+		blurbs.append(para.text)
 
 	# Find dates and parse with dateutil
 	dates=[]
@@ -29,7 +30,7 @@ def sciAm_out():
 		try:
 			dates.append(parse(re.split(u'\u2014',label.contents[0])[0]))
 		except:
-			dates.append(date.now())
+			dates.append(datetime.now())
 
 
 	# dictionary containing article info
