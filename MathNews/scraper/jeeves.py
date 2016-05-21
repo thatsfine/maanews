@@ -176,4 +176,6 @@ all_arts=sorted(all_arts, key=itemgetter('score'), reverse=True)
 firebase = firebase.FirebaseApplication('https://sweltering-heat-2148.firebaseio.com/', None)
 firebase.delete('/articles', '')
 for i in range(len(all_arts)):
-	result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title']})
+        result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title'], "date": all_arts[i]['date']})
+#	result = firebase.post('/articles', {"blurb": all_arts[i]['blurb'], "url": all_arts[i]['url'], "title": all_arts[i]['title']})
+

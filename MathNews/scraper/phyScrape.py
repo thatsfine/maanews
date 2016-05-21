@@ -37,7 +37,9 @@ def phys_out():
     # we make their datetime object today's date
     for thing in soup.find_all('div', 'details large'):
         try:
-            dates.append(parse((thing.contents[2].partition('i'))[0]))
+            #print(thing.contents[1].find_all(string=re.compile("n"))[0])
+            dates.append(parse(thing.contents[1].find_all(string=re.compile("n"))[0].partition('i')[0]))
+            #dates.append(parse((thing.contents[2].partition('i'))[0]))
         except:
             dates.append(date.today())
 
