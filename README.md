@@ -10,3 +10,5 @@ A brief overview of directory structure:
 
 /MathNews/scraper
 - This directory contains multiple python scripts which are run by an Amazon AWS S3 instance once every four hours. The most important file in this directory is jeeves.py (the pet name for the scraper) which runs every other script in the directory (there is one for each website), and scores all the articles that each script returns. Finally the script clears the database of its current contents and then posts all the new articles to it ensuring that at all times that the database that the app pulls from is holding the most current MathNews from our assigned websites.
+
+After the completion of this project in May 2016 as part of the requirements for the Software Development class at Harvey Mudd, Prof. Su took over development of the project, and after a few updates, he uploaded it to the iOS App Store where you can view/download it as MathFeed!
